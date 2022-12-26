@@ -3,21 +3,19 @@ import { CloseIcon } from "@chakra-ui/icons"
 import { useApp } from '../../contexts/contextApi'
 import React, { useState } from 'react'
 
-export const ModalItem = ({ photo, price, description }) => {
+export const ModalItem = ({ photo, price, title }) => {
 
-    const { setModalState } = useApp()
-
-    const [itemsAdded, setItemsAdded] = useState([])
+    const { setModalState, itemsAdded, setItemsAdded } = useApp()
 
     const addToBag = () => {
-        const items = []
         const newItems = {
-            photo,
-            price,
-            description
+            id: Math.random(),
+            photo: photo,
+            price: price,
+            title: title,
         }
-        setItemsAdded([...itemsAdded, newItems])
         console.log(itemsAdded)
+        setItemsAdded([...itemsAdded, newItems])
     }
 
     return (
@@ -27,8 +25,8 @@ export const ModalItem = ({ photo, price, description }) => {
             </Flex>
             <Flex gap="20px" flexDir="column">
                 <Img borderRadius="20px" objectFit="cover" backgroundPosition="center" src={photo} />
-                <Text w="200px" textAlign="center" fontWeight="bold">R$ {price}</Text>
-                <Text color="#fff" fontWeight="bold">Descrição do produto: {description}</Text>
+                <Text fontSize="35px" w="100%" textAlign="center" fontWeight="bold">R$ {price}</Text>
+                <Text color="#fff" fontWeight="bold">Descrição: {title}</Text>
             </Flex>
             <Flex position="absolute" bottom="20px" gap="10px">
                 <Button variant="link" transition="all 0.5s ease-in-out" w="70%" colorScheme="teal">Especificações</Button>

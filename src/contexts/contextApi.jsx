@@ -6,10 +6,12 @@ export function AppProvider({ children }) {
 
     const [modalState, setModalState] = useState(false)
     const [marketItem, setMarketItems] = useState([])
-
+    const [itemsAdded, setItemsAdded] = useState([])
 
     const value = {
-        modalState, setModalState, marketItem, setMarketItems
+        modalState, setModalState,
+        marketItem, setMarketItems,
+        itemsAdded, setItemsAdded
     }
 
     return (
