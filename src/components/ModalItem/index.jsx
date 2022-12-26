@@ -2,10 +2,13 @@ import { Flex, Text, Img, Button } from '@chakra-ui/react'
 import { CloseIcon } from "@chakra-ui/icons"
 import { useApp } from '../../contexts/contextApi'
 import React, { useState } from 'react'
+import { useToast } from '@chakra-ui/react'
 
 export const ModalItem = ({ photo, price, title }) => {
 
     const { setModalState, itemsAdded, setItemsAdded } = useApp()
+    const toast = useToast()
+
 
     const addToBag = () => {
         const newItems = {
@@ -14,7 +17,6 @@ export const ModalItem = ({ photo, price, title }) => {
             price: price,
             title: title,
         }
-        console.log(itemsAdded)
         setItemsAdded([...itemsAdded, newItems])
     }
 
@@ -29,8 +31,14 @@ export const ModalItem = ({ photo, price, title }) => {
                 <Text color="#fff" fontWeight="bold">Descrição: {title}</Text>
             </Flex>
             <Flex position="absolute" bottom="20px" gap="10px">
-                <Button variant="link" transition="all 0.5s ease-in-out" w="70%" colorScheme="teal">Especificações</Button>
-                <Button w="100%" colorScheme="twitter" onClick={() => addToBag()}>Adicionar ao carrinho</Button>
+                <Button variant="link" transition="all 0.5s ease-in-out" w="70%" color="#fff">Especificações</Button>
+                <Button w="100%" colorScheme="twitter" onClick={() => addToBag() & toast({
+                    title: 'Item adicionado com sucesso!',
+                    description: "Nós adicionamos o item ao seu carrinho com sucesso!",
+                    status: 'success',
+                    duration: 1000,
+                    isClosable: true,
+                })}>Adicionar ao carrinho</Button>
             </Flex>
         </Flex >
     )

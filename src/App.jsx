@@ -28,14 +28,14 @@ function App() {
     <Flex w="100%" p="40px" gap="10px" justify="center" align="center" flexWrap="wrap" h="100%">
       {data.length === 0 && <Spinner position="fixed" top="50%" size="lg" />}
       {modalState &&
-        <Flex position="fixed" borderRadius="20px" p="30px" color="#fff" top="20%" bgColor="#000" w="350px" h="650px">
+        <Flex position="fixed" borderRadius="20px" p="30px" color="#fff" top="20%" bgColor="#a2a2a2" w="350px" h="650px">
           <ModalItem photo={clickedItem.thumbnail} title={clickedItem.title} price={clickedItem.price} />
         </Flex>
       }
       {
         data.map((item) => {
           return (
-            <Flex key={item.id} onClick={() => setClickedItem(item) & setModalState(true)} cursor="Pointer" gap="5px" p="6px" _hover={{ backgroundColor: "#ccc" }} flexDir="column" align="center" m="0 auto" w="200px" h="100%" >
+            <Flex key={item.id} onClick={() => setClickedItem(item) & setModalState(true)} cursor="Pointer" gap="5px" p="8px" _hover={{ backgroundColor: "#ccc" }} flexDir="column" align="center" m="0 auto" w="200px" h="100%" >
               <Img src={item.thumbnail} />
               <Text fontWeight="400">{item.title}</Text>
               <Text>{item.description}</Text>
