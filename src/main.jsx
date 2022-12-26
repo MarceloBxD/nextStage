@@ -4,14 +4,18 @@ import App from './App'
 import './index.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import { Header } from './components/Header'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Routes'
 import { AppProvider } from './contexts/contextApi'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ChakraProvider>
     <AppProvider>
       <React.StrictMode>
-        <Header />
-        <App />
+        <BrowserRouter>
+          <Header />
+          <Router />
+        </BrowserRouter>
       </React.StrictMode>,
     </AppProvider>
   </ChakraProvider>
