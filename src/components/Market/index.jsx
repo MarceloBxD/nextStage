@@ -7,6 +7,8 @@ export const Market = () => {
 
   const [quantity, setQuantity] = useState(1);
 
+  const [payModal, setPayModal] = useState(false);
+
   const handleRemove = () => {
     const newItems = itemsAdded.filter((item) => item.id !== item.id);
     setItemsAdded(newItems);
@@ -24,8 +26,8 @@ export const Market = () => {
           key={index}
           gap="6px"
           borderRadius="10px"
-          _hover={{ backgroundColor: "silver" }}
-          p="6px"
+          _hover={{ backgroundColor: "#ccc" }}
+          p="12px"
           flexDir="column"
           align="center"
           m="30px auto"
@@ -33,8 +35,9 @@ export const Market = () => {
           h="100%"
         >
           <Img src={item.photo} />
-          <Text fontWeight="400">{item.title}</Text>
-          <Text>R$ {item.price}</Text>
+          <Text textAlign="center" fontWeight="400">
+            {item.title}
+          </Text>
           <Input
             id={item.id}
             onChange={(e) => setQuantity(e.target.value)}
@@ -42,6 +45,7 @@ export const Market = () => {
             w="50px"
             defaultValue="1"
           />
+          <Text fontWeight="500">R$ {item.price * quantity}</Text>
           <Button
             id={item.id}
             variant="ghost"
@@ -50,7 +54,57 @@ export const Market = () => {
           >
             Remover do carrinho
           </Button>
-          <Text>R$ {item.price * quantity}</Text>
+          <Button
+            variant="outline"
+            onClick={() => setPayModal(true)}
+            colorScheme="teal"
+          >
+            Comprar
+          </Button>
+          {payModal && (
+            <Flex
+              w="100%"
+              h="100%"
+              position="fixed"
+              top="0"
+              left="0"
+              zIndex="100"
+              justify="center"
+              align="center"
+              backgroundColor="rgba(0,0,0,0.5)"
+            >
+              <Flex
+                w="400px"
+                h="300px"
+                p={["10px", "20px"]}
+                backgroundColor="white"
+                borderRadius="10px"
+                flexDir="column"
+                align="center"
+                justify="center"
+              >
+                <Text fontSize="20px" fontWeight="400">
+                  Você tem certeza que deseja comprar esse item?
+                </Text>
+                <Flex mt="40px" gap="15px">
+                  <Button
+                    variant="outline"
+                    onClick={() => setPayModal(false)}
+                    colorScheme="teal"
+                  >
+                    Sim
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => setPayModal(false)}
+                    colorScheme="red"
+                  >
+                    Cancelar
+                  </Button>
+                </Flex>
+              </Flex>
+            </Flex>
+          )}
         </Flex>
       ))}
     </Flex>

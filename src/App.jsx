@@ -35,21 +35,49 @@ function App() {
     >
       {data.length === 0 && <Spinner position="fixed" top="50%" size="lg" />}
       {modalState && (
+        // position="fixed"
+        // borderRadius="20px"
+        // p="15px"
+        // zIndex="100"
+        // color="#fff"
+        // top="5%"
+        // bgColor="silver "
+        // w="350px"
+        // h="650px"
+
+        // <ModalItem
+        //     photo={clickedItem.thumbnail}
+        //     title={clickedItem.title}
+        //     price={clickedItem.price}
+        //   />
         <Flex
+          w="100%"
+          h="100%"
           position="fixed"
-          borderRadius="20px"
-          p="15px"
-          color="#fff"
-          top="5%"
-          bgColor="silver "
-          w="350px"
-          h="650px"
+          top="0"
+          left="0"
+          zIndex="100"
+          justify="center"
+          align="center"
+          backgroundColor="rgba(0,0,0,0.5)"
         >
-          <ModalItem
-            photo={clickedItem.thumbnail}
-            title={clickedItem.title}
-            price={clickedItem.price}
-          />
+          <Flex
+            w="450px"
+            h="650px"
+            backgroundColor="white"
+            borderRadius="10px"
+            flexDir="column"
+            align="center"
+            justify="center"
+          >
+            <Flex>
+              <ModalItem
+                photo={clickedItem.thumbnail}
+                title={clickedItem.title}
+                price={clickedItem.price}
+              />
+            </Flex>
+          </Flex>
         </Flex>
       )}
       {data.map((item) => {

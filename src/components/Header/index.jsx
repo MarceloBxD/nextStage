@@ -7,7 +7,6 @@ export const Header = () => {
     <Flex
       w="100%"
       h="8vh"
-      gap="15px"
       fontWeight="bold"
       justify="space-between"
       fontFamily="Unbounded"
@@ -22,11 +21,17 @@ export const Header = () => {
         textDecor="underline"
         fontSize="16px"
         fontFamily="sans-serif"
-        gap="10px"
+        gap="15px"
       >
-        <Link to="/">Home</Link>
-        <Link to="/market">Market</Link>
-        <Link to="/contact">Contact</Link>
+        <Flex _hover={{ transform: "scale(1.1)" }}>
+          <Link to="/">Home</Link>
+        </Flex>
+        <Flex _hover={{ transform: "scale(1.1)" }}>
+          <Link to="/market">Market</Link>
+        </Flex>
+        <Flex _hover={{ transform: "scale(1.1)" }}>
+          <Link to="/contact">Contact</Link>
+        </Flex>
       </Flex>
     </Flex>
   );

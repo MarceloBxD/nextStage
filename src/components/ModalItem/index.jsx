@@ -21,50 +21,62 @@ export const ModalItem = ({ photo, price, title }) => {
   };
 
   return (
-    <Flex align="center" borderRadius="10px" w="100%" flexDir="column">
-      <Flex w="100%" align="center" p="20px" justify="flex-end">
+    <Flex
+      align="center"
+      borderRadius="10px"
+      gap="10px"
+      p="10px"
+      w="100%"
+      flexDir="column"
+      zIndex="100"
+    >
+      <Flex w="100%" align="center" justify="flex-end">
         <CloseIcon onClick={() => setModalState(false)} cursor="pointer" />
       </Flex>
-      <Flex gap="20px" flexDir="column">
-        <Img
-          borderRadius="20px"
-          objectFit="cover"
-          backgroundPosition="center"
-          src={photo}
-        />
-        <Text fontSize="35px" w="100%" textAlign="center" fontWeight="bold">
-          R$ {price}
-        </Text>
-        <Text color="#fff" fontWeight="bold">
-          Descrição: {title}
-        </Text>
-      </Flex>
-      <Flex position="absolute" bottom="20px" gap="10px">
-        <Button
-          variant="link"
-          transition="all 0.5s ease-in-out"
-          w="70%"
-          color="#fff"
-        >
-          Especificações
-        </Button>
-        <Button
-          w="100%"
-          colorScheme="twitter"
-          onClick={() =>
-            addToMarket() &
-            toast({
-              title: "Item adicionado com sucesso!",
-              description:
-                "Nós adicionamos o item ao seu carrinho com sucesso!",
-              status: "success",
-              duration: 1000,
-              isClosable: true,
-            })
-          }
-        >
-          Adicionar ao carrinho
-        </Button>
+      <Flex gap="20px" w="300px" h="500px" justify="center" flexDir="column">
+        <Flex flex="1" justify="center">
+          <Img
+            borderRadius="15px"
+            objectFit="cover"
+            backgroundPosition="center"
+            src={photo}
+          />
+        </Flex>
+        <Flex flexDirection="column" gap="40px" flex="1">
+          <Text fontSize="35px" w="100%" textAlign="center" fontWeight="bold">
+            R$ {price}
+          </Text>
+          <Text color="#000" fontWeight="bold">
+            Descrição: {title}
+          </Text>
+        </Flex>
+        <Flex position="absolute" bottom="50px" gap="10px">
+          <Button
+            variant="outline"
+            transition="all 0.5s ease-in-out"
+            w="70%"
+            color="#000"
+          >
+            Especificações
+          </Button>
+          <Button
+            w="100%"
+            colorScheme="twitter"
+            onClick={() =>
+              addToMarket() &
+              toast({
+                title: "Item adicionado com sucesso!",
+                description:
+                  "Nós adicionamos o item ao seu carrinho com sucesso!",
+                status: "success",
+                duration: 1000,
+                isClosable: true,
+              })
+            }
+          >
+            Adicionar ao carrinho
+          </Button>
+        </Flex>
       </Flex>
     </Flex>
   );
